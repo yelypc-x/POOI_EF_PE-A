@@ -1,0 +1,30 @@
+﻿@model POOI_EF_PEÑA.Models.Consumidor
+
+@{
+    ViewBag.Title = "Detalle del consumidor";
+}
+
+<h2>Detalle del Consumidor</h2>
+
+@if (ViewBag.mensaje != null)
+{
+    <div class="alert alert-info">@ViewBag.mensaje</div>
+}
+
+@if (!string.IsNullOrEmpty(Model.dnicont))
+{
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(m => m.dnicont)</dt>
+        <dd>@Html.DisplayFor(m => m.dnicont)</dd>
+        <dt>@Html.DisplayNameFor(m => m.nomcont)</dt>
+        <dd>@Html.DisplayFor(m => m.nomcont)</dd>
+        <dt>@Html.DisplayNameFor(m => m.apecont)</dt>
+        <dd>@Html.DisplayFor(m => m.apecont)</dd>
+        <dt>@Html.DisplayNameFor(m => m.emailcont)</dt>
+        <dd>@Html.DisplayFor(m => m.emailcont)</dd>
+        <dt>@Html.DisplayNameFor(m => m.idpais)</dt>
+        <dd>@Html.DisplayFor(m => m.idpais)</dd>
+    </dl>
+}
+
+@Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })

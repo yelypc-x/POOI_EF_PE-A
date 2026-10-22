@@ -1,0 +1,57 @@
+﻿@using System.Linq
+@model IEnumerable<POOI_EF_PEÑA.Models.Consumidor>
+
+@{
+    ViewBag.Title = "Consumidores";
+}
+
+<h2>Lista de Consumidores</h2>
+
+@if (ViewBag.mensaje != null)
+{
+    <div class="alert alert-info">@ViewBag.mensaje</div>
+}
+
+<p>@Html.ActionLink("Nuevo consumidor", "Create", null, new { @class = "btn btn-primary" })</p>
+
+@if (Model == null || !Model.Any())
+{
+    <label>No hay registros</label>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.dnicont)</th>
+                <th>@Html.DisplayNameFor(m => m.nomcont)</th>
+                <th>@Html.DisplayNameFor(m => m.apecont)</th>
+                <th>@Html.DisplayNameFor(m => m.emailcont)</th>
+                <th>@Html.DisplayNameFor(m => m.idpais)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.dnicont</td>
+                    <td>@item.nomcont</td>
+                    <td>@item.apecont</td>
+                    <td>@item.emailcont</td>
+                    <td>@item.idpais</td>
+                    <td>
+                        @Html.ActionLink("Editar", "Update", new { id = item.dnicont }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Detalles", "Details", new { id = item.dnicont }, new { @class = "btn btn-info btn-sm" })
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.dnicont },
+                            new
+                                {
+                                    @class = "btn btn-danger btn-sm",
+                                  onclick = "return confirm('¿Eliminar este consumidor?');"
+                                })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
